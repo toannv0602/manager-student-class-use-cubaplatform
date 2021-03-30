@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://majorBrowse.caption"
+        focusComponent="majorsTable"
+        messagesPack="com.company.demomanger.web.screens.major">
+    <data readOnly="true">
+        <collection id="majorsDc"
+                    class="com.company.demomanger.entity.Major">
+            <view extends="_local"/>
+            <loader id="majorsDl">
+                <query>
+                    <![CDATA[select e from demomanger_Major e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="majorsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="majorsTable"
+                dataLoader="majorsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="majorsTable"
+                    width="100%"
+                    dataContainer="majorsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="majorsTable.create"/>
+                <button id="editBtn" action="majorsTable.edit"/>
+                <button id="removeBtn" action="majorsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

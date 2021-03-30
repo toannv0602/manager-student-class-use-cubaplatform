@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="demomanger" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.demomanger.entity.Teacher</class>
+        <class>com.company.demomanger.entity.Clazz</class>
+        <class>com.company.demomanger.entity.Student</class>
+        <class>com.company.demomanger.entity.Major</class>
+    </persistence-unit>
+</persistence>

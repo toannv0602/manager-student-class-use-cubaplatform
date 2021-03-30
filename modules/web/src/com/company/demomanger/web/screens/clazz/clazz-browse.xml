@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://clazzBrowse.caption"
+        focusComponent="clazzesTable"
+        messagesPack="com.company.demomanger.web.screens.clazz">
+    <data readOnly="true">
+        <collection id="clazzesDc"
+                    class="com.company.demomanger.entity.Clazz">
+            <view extends="_local">
+                <property name="major" view="_minimal"/>
+                <property name="teacher" view="_minimal"/>
+            </view>
+            <loader id="clazzesDl">
+                <query>
+                    <![CDATA[select e from demomanger_Clazz e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="clazzesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="clazzesTable"
+                dataLoader="clazzesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="clazzesTable"
+                    width="100%"
+                    dataContainer="clazzesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="major"/>
+                <column id="clazzName"/>
+                <column id="teacher"/>
+                <column id="count"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="clazzesTable.create"/>
+                <button id="editBtn" action="clazzesTable.edit"/>
+                <button id="removeBtn" action="clazzesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:gui="http://schemas.haulmont.com/cuba/spring/cuba-gui.xsd">
+
+    <!-- Annotation-based beans -->
+    <context:component-scan base-package="com.company.demomanger"/>
+    
+    <gui:screens base-packages="com.company.demomanger.web"/>
+    <bean id="demomanger_proxyCreator" class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector" ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="demomanger_ClazzService" value="com.company.demomanger.service.ClazzService"/>
+                <entry key="demomanger_StudentService" value="com.company.demomanger.service.StudentService"/>
+                <entry key="demomanger_TeacherService" value="com.company.demomanger.service.TeacherService"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>

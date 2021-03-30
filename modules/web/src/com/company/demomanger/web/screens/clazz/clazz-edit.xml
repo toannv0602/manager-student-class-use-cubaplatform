@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://clazzEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.demomanger.web.screens.clazz">
+    <data>
+        <instance id="clazzDc"
+                  class="com.company.demomanger.entity.Clazz">
+            <view extends="_local">
+                <property name="major" view="_minimal"/>
+                <property name="teacher" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="majorsDc" class="com.company.demomanger.entity.Major" view="_minimal">
+            <loader id="majorsDl">
+                <query>
+                    <![CDATA[select e from demomanger_Major e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="teachersDc" class="com.company.demomanger.entity.Teacher" view="_minimal">
+            <loader id="teachersDl">
+                <query>
+                    <![CDATA[select e from demomanger_Teacher e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="clazzDc">
+            <column width="350px">
+                <textField id="clazzNameField" property="clazzName"/>
+                <lookupPickerField id="majorField" optionsContainer="majorsDc" property="major"/>
+                <lookupPickerField id="teacherField" optionsContainer="teachersDc" property="teacher"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

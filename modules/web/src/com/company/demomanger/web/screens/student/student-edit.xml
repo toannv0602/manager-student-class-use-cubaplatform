@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://studentEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.demomanger.web.screens.student">
+    <data>
+        <instance id="studentDc"
+                  class="com.company.demomanger.entity.Student">
+            <view extends="_local">
+                <property name="major" view="_minimal"/>
+                <property name="clazz" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="majorsDc" class="com.company.demomanger.entity.Major" view="_minimal">
+            <loader id="majorsDl">
+                <query>
+                    <![CDATA[select e from demomanger_Major e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="clazzesDc" class="com.company.demomanger.entity.Clazz" view="_minimal">
+            <loader id="clazzesDl">
+                <query>
+                    <![CDATA[select e from demomanger_Clazz e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="studentDc">
+            <column width="350px">
+                <lookupPickerField id="majorField" optionsContainer="majorsDc" property="major"/>
+                <textField id="studentCodeField" property="studentCode"/>
+                <textField id="fullNameField" property="fullName"/>
+                <textField id="genderField" property="gender"/>
+                <textField id="addressField" property="address"/>
+                <textField id="phoneNumberField" property="phoneNumber"/>
+                <textField id="emailField" property="email"/>
+                <lookupPickerField id="clazzField" optionsContainer="clazzesDc" property="clazz"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

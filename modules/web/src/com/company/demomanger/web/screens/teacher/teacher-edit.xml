@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://teacherEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.demomanger.web.screens.teacher">
+    <data>
+        <instance id="teacherDc"
+                  class="com.company.demomanger.entity.Teacher">
+            <view extends="_local">
+                <property name="major" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="majorsDc" class="com.company.demomanger.entity.Major" view="_minimal">
+            <loader id="majorsDl">
+                <query>
+                    <![CDATA[select e from demomanger_Major e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="teacherDc">
+            <column width="350px">
+                <lookupPickerField id="majorField" optionsContainer="majorsDc" property="major"/>
+                <textField id="teacherCodeField" property="teacherCode"/>
+                <textField id="fullNameField" property="fullName"/>
+                <textField id="adressField" property="adress"/>
+                <textField id="emailField" property="email"/>
+                <textField id="phoneNumberField" property="phoneNumber"/>
+                <dateField id="dobField" property="dob"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

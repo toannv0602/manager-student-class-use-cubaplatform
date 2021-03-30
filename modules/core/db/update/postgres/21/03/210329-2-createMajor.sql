@@ -1,0 +1,1 @@
+create unique index IDX_DEMOMANGER_MAJOR_UK_NAME on DEMOMANGER_MAJOR (NAME);

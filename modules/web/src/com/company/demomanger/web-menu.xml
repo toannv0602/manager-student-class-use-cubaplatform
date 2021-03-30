@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-demomanger" insertBefore="administration" caption="mainMsg://menu_config.application-demomanger">
+        <item screen="demomanger_Clazz.browse" caption="mainMsg://menu_config.demomanger_Clazz.browse"/>
+        <item screen="demomanger_Teacher.browse" caption="mainMsg://menu_config.demomanger_Teacher.browse"/>
+        <item screen="demomanger_Student.browse" caption="mainMsg://menu_config.demomanger_Student.browse"/>
+        <item screen="demomanger_Major.browse" caption="mainMsg://menu_config.demomanger_Major.browse"/>
+    </menu>
+</menu-config>
